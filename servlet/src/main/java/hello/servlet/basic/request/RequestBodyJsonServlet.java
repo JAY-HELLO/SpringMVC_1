@@ -1,7 +1,7 @@
 package hello.servlet.basic.request;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hello.servlet.basic.helloData;
+import hello.servlet.basic.HelloData;
 import org.springframework.util.StreamUtils;
 
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class RequestBodyJsonServlet extends HttpServlet {
         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
         System.out.println("messageBody = " + messageBody);
 
-        helloData helloData = objectMapper.readValue(messageBody, helloData.class);
+        HelloData helloData = objectMapper.readValue(messageBody, HelloData.class);
         System.out.println("helloData.getUsername() = " + helloData.getUsername());
         System.out.println("helloData.getAge() = " + helloData.getAge());
 
