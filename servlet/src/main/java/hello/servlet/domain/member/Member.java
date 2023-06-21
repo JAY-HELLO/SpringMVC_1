@@ -8,7 +8,6 @@ import lombok.Setter;
 public class Member {
 
     private Long id;
-
     private String username;
     private int age;
 
