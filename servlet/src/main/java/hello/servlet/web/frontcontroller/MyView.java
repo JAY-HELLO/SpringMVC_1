@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * MyView 클래스에서 dispatcher forward의 기능을 한꺼번에 대신 해준다.
@@ -19,5 +20,16 @@ public class MyView {
     public void render(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
         dispatcher.forward(req, resp);
+    }
+
+    public void render(Map<String, Object> model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        modelToRequestAttribute(model, req);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
+        dispatcher.forward(req, resp);
+    }
+
+    private void modelToRequestAttribute(Map<String, Object> model, HttpServletRequest req) {
+        model.forEach((key, value)-> req.setAttribute(key,value));
     }
 }
