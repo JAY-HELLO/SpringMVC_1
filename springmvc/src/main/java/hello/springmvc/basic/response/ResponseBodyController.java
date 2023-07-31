@@ -8,12 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-@Controller
+@RestController
+// @RestController은 Controller 와 ResponseBody 어노테이션을 합쳐 놓은 것.
 public class ResponseBodyController {
 
     @GetMapping("/response-body-starting-v1")
